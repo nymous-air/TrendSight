@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ app_name }} Results</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #eef1f5;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            font-size: 26px;
+            text-align: center;
+        }
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">{{ app_name }} – Analysis Results</div>
+
+<a href="/" class="btn btn-secondary back-btn">Upload Another File</a>
+
+<div class="container mt-4">
+
+    <div class="section-card">
+        <h3>📄 Data Preview</h3>
+        {{ table | safe }}
+    </div>
+
+    <div class="section-card">
+        <h3>📊 Summary Statistics</h3>
+        {{ summary_stats | safe }}
+    </div>
+
+    <div class="section-card">
+        <h3>📈 Column Totals</h3>
+        {{ totals | safe }}
+    </div>
+
+    <div class="section-card">
+        <h3>🔢 Column Means</h3>
+        {{ means | safe }}
+    </div>
+
+    <div class="section-card bg-warning-subtle">
+        <h4 class="text-danger">⚠ AI Insights Unavailable</h4>
+        <p>{{ ai_message }}</p>
+    </div>
+
+</div>
+
+</body>
+</html>
